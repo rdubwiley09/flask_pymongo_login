@@ -1,0 +1,18 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+extends header
+block body
+  .row
+    .col-md-4
+    .col-md-4
+      h1 Reset!
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      ul(class=flashes)
+        {% for message in messages %}
+        li {{ message }}
+        {% endfor %}
+      {% endif %}
+      {% endwith %}
+      {{wtf.quick_form(forgot_password_form)}}
+    .col-md-4
